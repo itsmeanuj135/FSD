@@ -1,11 +1,7 @@
 import http from "http";
 
-const server = http.createServer();
-
-server.on("request", (req, res)=> {
-    res.write("<h1>Welcome to server Side Programming</h1>");
-    res.write("<h2>Nodemon is tracking the files</h2>");
-    res.end();
+const server = http.createServer((req, res) => {
+    res.end("<h2 style='color: red;'>Welcome to the Server</h2>");
 });
 
 server.listen(5000, ()=> {
