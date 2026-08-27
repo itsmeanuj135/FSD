@@ -12,6 +12,13 @@ const stream = createReadStream("BigFile.txt", {encoding: "utf-8"});
         const text = await readFile("BigFile.txt");
         res.end(text);
     }
+    else if(req.url==="/product"){
+
+        res.setHeader("content-type", "text/html"); 
+        res.statusCode = 200;
+        const data = createReadStream("product.html");
+        data.pipe(res);
+    }
 
 });
 server.listen(3000, () => {

@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latest Watch | ChronoX</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #0a0a0a;
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    /* Navbar */
+    nav {
+      height: 75px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 8%;
+      background: #0a0a0a;
+      border-bottom: 1px solid #222;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+    .logo span {
+      color: #d4af37;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #d4af37;
+    }
+
+    .nav-btn {
+      background: #d4af37;
+      color: #111;
+      padding: 10px 20px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 650px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 70px 8%;
+      background:
+        radial-gradient(circle at 80% 50%, #38300e 0%, #111 35%, #0a0a0a 70%);
+      gap: 50px;
+    }
+
+    .hero-content {
+      max-width: 550px;
+    }
+
+    .tag {
+      color: #d4af37;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+
+    .hero h1 {
+      font-size: clamp(45px, 6vw, 78px);
+      line-height: 1.05;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 span {
+      color: #d4af37;
+    }
+
+    .hero p {
+      color: #bbb;
+      font-size: 18px;
+      margin-bottom: 35px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 14px 28px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .primary {
+      background: #d4af37;
+      color: #111;
+    }
+
+    .primary:hover {
+      background: #f0ce55;
+      transform: translateY(-2px);
+    }
+
+    .secondary {
+      border: 1px solid #555;
+      color: #fff;
+    }
+
+    .secondary:hover {
+      border-color: #d4af37;
+      color: #d4af37;
+    }
+
+    /* Watch */
+    .watch-area {
+      width: 430px;
+      height: 500px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .watch {
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #202020 0%, #080808 72%);
+      border: 12px solid #d4af37;
+      box-shadow:
+        0 0 0 8px #444,
+        0 0 45px rgba(212, 175, 55, 0.45);
+      position: relative;
+      z-index: 2;
+    }
+
+    .watch::before,
+    .watch::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(#333, #111);
+      width: 90px;
+      height: 140px;
+      z-index: -1;
+    }
+
+    .watch::before {
+      top: -145px;
+      border-radius: 25px 25px 0 0;
+    }
+
+    .watch::after {
+      bottom: -145px;
+      border-radius: 0 0 25px 25px;
+    }
+
+    .number {
+      position: absolute;
+      color: #fff;
+      font-weight: bold;
+      font-size: 17px;
+    }
+
+    .twelve {
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .three {
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .six {
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .nine {
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .hand {
+      position: absolute;
+      left: 50%;
+      bottom: 50%;
+      transform-origin: bottom;
+      border-radius: 5px;
+    }
+
+    .hour {
+      height: 65px;
+      width: 7px;
+      background: #fff;
+      transform: translateX(-50%) rotate(35deg);
+    }
+
+    .minute {
+      height: 90px;
+      width: 4px;
+      background: #d4af37;
+      transform: translateX(-50%) rotate(125deg);
+    }
+
+    .center {
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background: #d4af37;
+      border-radius: 50%;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    /* Features */
+    .features {
+      padding: 80px 8%;
+      background: #101010;
+      text-align: center;
+    }
+
+    .features h2 {
+      font-size: 38px;
+      margin-bottom: 45px;
+    }
+
+    .features h2 span {
+      color: #d4af37;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .feature-card {
+      padding: 35px 25px;
+      background: #181818;
+      border: 1px solid #292929;
+      border-radius: 15px;
+      transition: 0.3s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-8px);
+      border-color: #d4af37;
+    }
+
+    .icon {
+      font-size: 40px;
+      margin-bottom: 15px;
+    }
+
+    .feature-card h3 {
+      margin-bottom: 10px;
+      color: #d4af37;
+    }
+
+    .feature-card p {
+      color: #aaa;
+    }
+
+    /* Product */
+    .product {
+      padding: 90px 8%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 50px;
+    }
+
+    .product-image {
+      width: 45%;
+      min-height: 350px;
+      border-radius: 20px;
+      background: linear-gradient(145deg, #252525, #0d0d0d);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 0 0 50px rgba(212, 175, 55, 0.08);
+    }
+
+    .mini-watch {
+      width: 190px;
+      height: 190px;
+      border-radius: 50%;
+      border: 10px solid #d4af37;
+      background: #080808;
+      box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+      position: relative;
+    }
+
+    .product-info {
+      flex: 1;
+    }
+
+    .product-info h2 {
+      font-size: 45px;
+      margin-bottom: 15px;
+    }
+
+    .product-info p {
+      color: #aaa;
+      margin-bottom: 20px;
+    }
+
+    .price {
+      color: #d4af37;
+      font-size: 32px;
+      font-weight: bold;
+      margin-bottom: 25px;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 30px;
+      border-top: 1px solid #222;
+      color: #777;
+    }
+
+    /* Responsive */
+    @media (max-width: 850px) {
+      nav {
+        padding: 0 5%;
+      }
+
+      nav ul {
+        display: none;
+      }
+
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 60px 5%;
+      }
+
+      .buttons {
+        justify-content: center;
+      }
+
+      .watch-area {
+        transform: scale(0.8);
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .product {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .product-image {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="logo">CHRONO<span>X</span></div>
+
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#product">Product</a></li>
+    </ul>
+
+    <a href="#product" class="nav-btn">Buy Now</a>
+  </nav>
+
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="tag">New Generation</div>
+
+      <h1>
+        Time Meets<br>
+        <span>Innovation.</span>
+      </h1>
+
+      <p>
+        Meet the latest ChronoX smartwatch — a premium blend of
+        timeless design, smart technology and powerful performance.
+      </p>
+
+      <div class="buttons">
+        <a href="#product" class="btn primary">Explore Watch</a>
+        <a href="#features" class="btn secondary">Discover Features</a>
+      </div>
+    </div>
+
+    <div class="watch-area">
+      <div class="watch">
+        <div class="number twelve">12</div>
+        <div class="number three">3</div>
+        <div class="number six">6</div>
+        <div class="number nine">9</div>
+
+        <div class="hand hour"></div>
+        <div class="hand minute"></div>
+        <div class="center"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="features" id="features">
+    <h2>Built for the <span>Future</span></h2>
+
+    <div class="feature-grid">
+
+      <div class="feature-card">
+        <div class="icon">⌚</div>
+        <h3>Premium Design</h3>
+        <p>
+          A sleek metal body and refined finish designed for
+          modern everyday style.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="icon">♥</div>
+        <h3>Health Tracking</h3>
+        <p>
+          Keep track of your daily activity, heart rate and
+          overall wellness.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="icon">⚡</div>
+        <h3>Long Battery</h3>
+        <p>
+          Powerful battery performance keeps your watch ready
+          throughout your day.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="product" id="product">
+
+    <div class="product-image">
+      <div class="mini-watch"></div>
+    </div>
+
+    <div class="product-info">
+      <div class="tag">ChronoX Series 01</div>
+
+      <h2>The Latest Watch</h2>
+
+      <p>
+        Designed for people who expect more from every second.
+        Experience a premium smartwatch with an elegant look
+        and smart features.
+      </p>
+
+      <div class="price">$299</div>
+
+      <a href="#" class="btn primary">Buy Now</a>
+    </div>
+
+  </section>
+
+  <footer>
+    <p>© 2026 ChronoX. All Rights Reserved.</p>
+  </footer>
+
+</body>
+</html>

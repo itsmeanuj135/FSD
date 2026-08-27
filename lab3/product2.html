@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChronoX - Latest Watches</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0b0b0b;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        /* NAVBAR */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.95);
+            border-bottom: 1px solid #222;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: auto;
+            height: 75px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 25px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #d4af37;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #d4af37;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 100px 20px 50px;
+
+            background:
+                linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.8)),
+                url("https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=1800&q=80");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: clamp(45px, 7vw, 80px);
+            margin-bottom: 20px;
+            letter-spacing: 3px;
+        }
+
+        .hero h1 span {
+            color: #d4af37;
+        }
+
+        .hero p {
+            color: #ddd;
+            font-size: 19px;
+            margin-bottom: 35px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 30px;
+            background: #d4af37;
+            color: #000;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #fff;
+            transform: translateY(-3px);
+        }
+
+        /* COMMON SECTION */
+        section {
+            padding: 100px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .section-title span {
+            color: #d4af37;
+        }
+
+        .section-title p {
+            color: #aaa;
+        }
+
+        /* PRODUCTS */
+        #products {
+            background: #111;
+        }
+
+        .products-container {
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .product-card {
+            background: #191919;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid #292929;
+            transition: 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            border-color: #d4af37;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 25px;
+        }
+
+        .product-info h3 {
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+
+        .product-info p {
+            color: #999;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            color: #d4af37;
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 18px;
+        }
+
+        .buy-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border: 1px solid #d4af37;
+            color: #d4af37;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: 0.3s;
+        }
+
+        .buy-btn:hover {
+            background: #d4af37;
+            color: #000;
+        }
+
+        /* ABOUT */
+        .about {
+            max-width: 1000px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .about p {
+            color: #bbb;
+            font-size: 18px;
+        }
+
+        /* CONTACT */
+        #contact {
+            background: #0e0e0e;
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        form {
+            display: grid;
+            gap: 18px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 15px;
+            background: #191919;
+            border: 1px solid #333;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            outline: none;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: #d4af37;
+        }
+
+        textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        button {
+            padding: 15px;
+            border: none;
+            background: #d4af37;
+            color: #000;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: white;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #050505;
+            text-align: center;
+            padding: 25px;
+            color: #777;
+            border-top: 1px solid #222;
+        }
+
+        footer span {
+            color: #d4af37;
+        }
+
+        /* MOBILE */
+        @media (max-width: 800px) {
+            .nav-links {
+                gap: 15px;
+            }
+
+            .nav-links a {
+                font-size: 14px;
+            }
+
+            .products-container {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            nav {
+                flex-direction: column;
+                justify-content: center;
+                height: 100px;
+                gap: 8px;
+            }
+
+            .logo {
+                font-size: 22px;
+            }
+
+            .nav-links {
+                gap: 18px;
+            }
+
+            .nav-links a {
+                font-size: 13px;
+            }
+
+            .hero {
+                padding-top: 130px;
+            }
+
+            section {
+                padding: 70px 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <header>
+        <nav>
+            <div class="logo">CHRONOX</div>
+
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <!-- HOME -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>TIME <span>REDEFINED</span></h1>
+
+            <p>
+                Discover the latest collection of premium watches
+                designed for people who value style, precision and luxury.
+            </p>
+
+            <a href="#products" class="btn">Explore Collection</a>
+        </div>
+    </section>
+
+
+    <!-- PRODUCTS -->
+    <section id="products">
+
+        <div class="section-title">
+            <h2>Latest <span>Watches</span></h2>
+            <p>Explore our newest premium collection.</p>
+        </div>
+
+        <div class="products-container">
+
+            <!-- PRODUCT 1 -->
+            <div class="product-card">
+                <img
+                    src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&w=800&q=80"
+                    alt="Luxury Gold Watch">
+
+                <div class="product-info">
+                    <h3>Royal Gold</h3>
+                    <p>Elegant automatic luxury watch.</p>
+                    <div class="price">₹24,999</div>
+                    <a href="#contact" class="buy-btn">Buy Now</a>
+                </div>
+            </div>
+
+
+            <!-- PRODUCT 2 -->
+            <div class="product-card">
+                <img
+                    src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=800&q=80"
+                    alt="Classic Black Watch">
+
+                <div class="product-info">
+                    <h3>Black Phantom</h3>
+                    <p>Modern design with a bold personality.</p>
+                    <div class="price">₹18,499</div>
+                    <a href="#contact" class="buy-btn">Buy Now</a>
+                </div>
+            </div>
+
+
+            <!-- PRODUCT 3 -->
+            <div class="product-card">
+                <img
+                    src="https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?auto=format&fit=crop&w=800&q=80"
+                    alt="Premium Silver Watch">
+
+                <div class="product-info">
+                    <h3>Silver Elite</h3>
+                    <p>Clean, sophisticated and timeless.</p>
+                    <div class="price">₹21,999</div>
+                    <a href="#contact" class="buy-btn">Buy Now</a>
+                </div>
+            </div>
+
+
+            <!-- PRODUCT 4 -->
+            <div class="product-card">
+                <img
+                    src="https://images.unsplash.com/photo-1539874754764-5a96559165b0?auto=format&fit=crop&w=800&q=80"
+                    alt="Luxury Chronograph Watch">
+
+                <div class="product-info">
+                    <h3>Chrono Pro</h3>
+                    <p>Precision chronograph for professionals.</p>
+                    <div class="price">₹29,999</div>
+                    <a href="#contact" class="buy-btn">Buy Now</a>
+                </div>
+            </div>
+
+
+            <!-- PRODUCT 5 -->
+            <div class="product-card">
+                <img
+                    src="https://images.unsplash.com/photo-1612817288484-6f916006741a?auto=format&fit=crop&w=800&q=80"
+                    alt="Luxury Men's Watch">
+
+                <div class="product-info">
+                    <h3>Midnight Steel</h3>
+                    <p>Premium steel body with a classic finish.</p>
+                    <div class="price">₹16,999</div>
+                    <a href="#contact" class="buy-btn">Buy Now</a>
+                </div>
+            </div>
+
+
+            <!-- PRODUCT 6 -->
+            <div class="product-card">
+                <img
+                    src="https://images.unsplash.com/photo-1508057198894-247b23fe5ade?auto=format&fit=crop&w=800&q=80"
+                    alt="Premium Watch">
+
+                <div class="product-info">
+                    <h3>Ocean Master</h3>
+                    <p>Sporty design built for everyday adventure.</p>
+                    <div class="price">₹19,999</div>
+                    <a href="#contact" class="buy-btn">Buy Now</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ABOUT -->
+    <section id="about">
+
+        <div class="section-title">
+            <h2>About <span>ChronoX</span></h2>
+        </div>
+
+        <div class="about">
+            <p>
+                ChronoX is a modern watch brand focused on bringing together
+                timeless craftsmanship and contemporary design. Our collection
+                is created for those who believe a watch is more than an accessory
+                — it is a statement of personality.
+            </p>
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+    <section id="contact">
+
+        <div class="section-title">
+            <h2>Contact <span>Us</span></h2>
+            <p>Have a question? Send us a message.</p>
+        </div>
+
+        <div class="contact-container">
+
+            <form onsubmit="sendMessage(event)">
+
+                <input
+                    type="text"
+                    placeholder="Your Name"
+                    required>
+
+                <input
+                    type="email"
+                    placeholder="Your Email"
+                    required>
+
+                <input
+                    type="text"
+                    placeholder="Subject"
+                    required>
+
+                <textarea
+                    placeholder="Your Message"
+                    required></textarea>
+
+                <button type="submit">
+                    Send Message
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+        <p>
+            © 2026 <span>ChronoX</span>. All Rights Reserved.
+        </p>
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+    <script>
+        function sendMessage(event) {
+            event.preventDefault();
+
+            alert("Thank you! Your message has been received.");
+
+            event.target.reset();
+        }
+    </script>
+
+</body>
+</html>
