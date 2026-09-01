@@ -1,0 +1,245 @@
+[
+  {
+    "id": "phone-001",
+    "brand": "Apple",
+    "model": "iPhone 16 Pro",
+    "category": "smartphone",
+    "release_date": "2024-09-20",
+    "price": {
+      "currency": "USD",
+      "amount": 999,
+      "display": "$999"
+    },
+    "colors": [
+      "Black Titanium",
+      "White Titanium",
+      "Natural Titanium",
+      "Desert Titanium"
+    ],
+    "network": {
+      "sim": "Nano-SIM + eSIM",
+      "cellular": "5G"
+    },
+    "display": {
+      "type": "Super Retina XDR OLED",
+      "size_inches": 6.3,
+      "resolution": "2622 x 1206",
+      "refresh_rate_hz": 120,
+      "features": ["HDR", "Always-On display", "ProMotion"]
+    },
+    "performance": {
+      "chipset": "Apple A18 Pro",
+      "cpu": "6-core CPU",
+      "gpu": "6-core GPU",
+      "ram_gb": 8
+    },
+    "storage_gb": [128, 256, 512, 1024],
+    "cameras": {
+      "rear": [
+        {
+          "type": "main",
+          "megapixels": 48,
+          "features": ["OIS", "4K video"]
+        },
+        {
+          "type": "ultrawide",
+          "megapixels": 48,
+          "features": ["Macro"]
+        },
+        {
+          "type": "telephoto",
+          "megapixels": 12,
+          "optical_zoom": "5x"
+        }
+      ],
+      "front": {
+        "megapixels": 12,
+        "features": ["Autofocus", "4K video"]
+      }
+    },
+    "battery": {
+      "capacity_mah": null,
+      "charging": ["USB-C wired", "MagSafe wireless"]
+    },
+    "protection": {
+      "water_resistance": "IP68",
+      "materials": "Titanium frame with Ceramic Shield front"
+    },
+    "dimensions_mm": {
+      "height": 149.6,
+      "width": 71.5,
+      "depth": 8.25
+    },
+    "weight_g": 199,
+    "os": "iOS",
+    "connectivity": ["Wi-Fi 7", "Bluetooth 5.3", "NFC", "USB-C"],
+    "key_features": [
+      "Action button",
+      "Camera Control",
+      "Face ID",
+      "Pro video recording"
+    ]
+  },
+  {
+    "id": "phone-002",
+    "brand": "Samsung",
+    "model": "Galaxy S25 Ultra",
+    "category": "smartphone",
+    "release_date": "2025-02-07",
+    "price": {
+      "currency": "USD",
+      "amount": 1299.99,
+      "display": "$1,299.99"
+    },
+    "colors": [
+      "Titanium Black",
+      "Titanium Gray",
+      "Titanium Silverblue",
+      "Titanium Whitesilver"
+    ],
+    "network": {
+      "sim": "Nano-SIM + eSIM",
+      "cellular": "5G"
+    },
+    "display": {
+      "type": "Dynamic AMOLED 2X",
+      "size_inches": 6.9,
+      "resolution": "3120 x 1440",
+      "refresh_rate_hz": 120,
+      "features": ["HDR10+", "Adaptive refresh rate"]
+    },
+    "performance": {
+      "chipset": "Snapdragon 8 Elite for Galaxy",
+      "cpu": "Octa-core",
+      "gpu": "Adreno",
+      "ram_gb": 12
+    },
+    "storage_gb": [256, 512, 1024],
+    "cameras": {
+      "rear": [
+        {
+          "type": "main",
+          "megapixels": 200,
+          "features": ["OIS"]
+        },
+        {
+          "type": "ultrawide",
+          "megapixels": 50,
+          "features": ["Macro"]
+        },
+        {
+          "type": "telephoto",
+          "megapixels": 50,
+          "optical_zoom": "5x"
+        },
+        {
+          "type": "telephoto",
+          "megapixels": 10,
+          "optical_zoom": "3x"
+        }
+      ],
+      "front": {
+        "megapixels": 12,
+        "features": ["4K video"]
+      }
+    },
+    "battery": {
+      "capacity_mah": 5000,
+      "charging": ["45W wired", "Wireless charging"]
+    },
+    "protection": {
+      "water_resistance": "IP68",
+      "materials": "Titanium frame with Gorilla Armor 2"
+    },
+    "dimensions_mm": {
+      "height": 162.8,
+      "width": 77.6,
+      "depth": 8.2
+    },
+    "weight_g": 218,
+    "os": "Android",
+    "connectivity": ["Wi-Fi 7", "Bluetooth 5.4", "NFC", "USB-C"],
+    "key_features": [
+      "S Pen",
+      "Galaxy AI",
+      "Ultrasonic fingerprint sensor",
+      "Samsung DeX"
+    ]
+  },
+  {
+    "id": "phone-003",
+    "brand": "Google",
+    "model": "Pixel 9 Pro",
+    "category": "smartphone",
+    "release_date": "2024-08-22",
+    "price": {
+      "currency": "USD",
+      "amount": 999,
+      "display": "$999"
+    },
+    "colors": ["Obsidian", "Porcelain", "Hazel", "Rose Quartz"],
+    "network": {
+      "sim": "Nano-SIM + eSIM",
+      "cellular": "5G"
+    },
+    "display": {
+      "type": "LTPO OLED",
+      "size_inches": 6.3,
+      "resolution": "2856 x 1280",
+      "refresh_rate_hz": 120,
+      "features": ["HDR", "Always-On display"]
+    },
+    "performance": {
+      "chipset": "Google Tensor G4",
+      "cpu": "Octa-core",
+      "gpu": "Mali",
+      "ram_gb": 16
+    },
+    "storage_gb": [128, 256, 512, 1024],
+    "cameras": {
+      "rear": [
+        {
+          "type": "main",
+          "megapixels": 50,
+          "features": ["OIS"]
+        },
+        {
+          "type": "ultrawide",
+          "megapixels": 48,
+          "features": ["Macro"]
+        },
+        {
+          "type": "telephoto",
+          "megapixels": 48,
+          "optical_zoom": "5x"
+        }
+      ],
+      "front": {
+        "megapixels": 42,
+        "features": ["Autofocus", "4K video"]
+      }
+    },
+    "battery": {
+      "capacity_mah": 4700,
+      "charging": ["Wired fast charging", "Wireless charging"]
+    },
+    "protection": {
+      "water_resistance": "IP68",
+      "materials": "Aluminum frame with Gorilla Glass Victus 2"
+    },
+    "dimensions_mm": {
+      "height": 152.8,
+      "width": 72.0,
+      "depth": 8.5
+    },
+    "weight_g": 199,
+    "os": "Android",
+    "connectivity": ["Wi-Fi 7", "Bluetooth 5.3", "NFC", "USB-C"],
+    "key_features": [
+      "Gemini AI integration",
+      "Titan M2 security",
+      "Call Screen",
+      "Magic Editor"
+    ]
+  }
+]

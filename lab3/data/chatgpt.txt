@@ -1,0 +1,6 @@
+ChatGPT is an artificial intelligence (AI) chatbot developed by OpenAI.
+ It can understand natural language and generate human-like responses to questions and prompts.
+  ChatGPT can be used for many purposes, such as learning, writing, coding, brainstorming, summarizing information, and solving problems. 
+   It can explain complex topics in simple language and help users explore different ideas. However, ChatGPT can sometimes make mistakes, 
+   so important information should be verified from reliable sources. Overall, ChatGPT is a useful AI tool for learning, productivity,
+    and everyday assistance.
