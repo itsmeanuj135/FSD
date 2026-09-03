@@ -15,9 +15,7 @@ import http from 'http';
     else if (req.url==="/product" && req.method==="DELETE") {
         res.end("remove product")
     }
-
-
- });
+});
 
 
 
